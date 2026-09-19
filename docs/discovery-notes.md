@@ -25,6 +25,7 @@ a proper spec once discovery is complete.
 | 3 | Company structure: departments and product lines; GL accounts | Recorded |
 | 4 | Revenue mix by product line | Recorded |
 | 5 | Customer segments: consumer lines vs. the hose business | Recorded |
+| 6 | Sales channels, geography, prepaid model, and cash-flow treatment | Recorded |
 
 ## Background
 
@@ -241,6 +242,60 @@ consumer lines.
   detail appears in the final presentation or is internal working
   detail only.
 
+## Segment 6: Sales channels, geography, prepaid model, and cash flow
+
+### How and where the consumer lines sell
+
+- Most sales are **direct to the customer**, online or by phone.
+- Geography is overwhelmingly the **United States**. Very little
+  business is done outside the country.
+- **Canada** is served through a third party, **Power Source Canada**,
+  a dealer network that at one point was connected to Briggs &
+  Stratton. They sell through local dealers across Canada, which lets
+  Canadian customers get product faster and have a dealer set it up,
+  connect it, and deliver it.
+
+### Prepaid model: customers pay before shipment
+
+- Because the customer base is homeowners buying direct, sales are
+  **prepaid**. The customer pays in advance and the unit ships after.
+- As a result there is very little accounts receivable to chase, and
+  effectively no bad debt.
+- The main exception is Power Source Canada, which buys on **net 30**
+  terms. They are the company's largest single customer, roughly
+  **$100,000 per year**, and were as high as **$200,000** in earlier
+  years.
+
+### Cash-flow treatment in the budget
+
+This is a key simplification for the app:
+
+- Revenue and cash are treated as the same thing. **When we sell, we
+  have the cash.**
+- The budget cash flow does **not** model net-30 terms, receivables
+  aging, or bad debt.
+- The unit forecast drives everything: if the budget says 100 units
+  are ordered in a month, those 100 units become revenue in that month.
+- Timing caveat: a few units ordered at month end will ship in the
+  following month because shipping is **Monday through Friday only**.
+  Ken accepts this as noise and does not want it modeled.
+
+### Implications for the app
+
+- **No AR module, no collections assumptions, no bad-debt reserve** in
+  the budget. Revenue in a period equals cash in the same period.
+- The Power Source Canada net-30 exception is small enough that Ken
+  does not want it modeled. It should be noted in documentation so a
+  future reader understands why the model ignores it.
+- **Units per month is the primary input** for the consumer lines.
+  Revenue dollars, and cash, are derived from it.
+- A channel field (direct online, direct phone, Canada dealer) may be
+  useful for context but is not needed to compute the budget. Park
+  whether it appears in the report.
+- Geography is effectively single-country. No multi-currency or
+  regional roll-up is needed. Canadian sales through Power Source
+  Canada are presumably billed in US dollars; confirm.
+
 ## Parked questions
 
 Held until Ken finishes his walkthrough. Grouped by category so they can
@@ -278,6 +333,13 @@ be worked through one group at a time.
 - Other revenue streams beyond rakes, nut rake, and adapter (parts,
   accessories, shipping, service)?
 - Does sales channel (direct, dealer, online) matter to the report?
+
+- Does the report break out sales channel (online, phone, Power Source
+  Canada) or is it total units and dollars by product line only?
+- Is Power Source Canada billed in US dollars? Any other currency
+  exposure to care about?
+- Is Power Source Canada tracked as its own line or customer in the
+  budget, or folded into the product line totals?
 
 ### Source data and reporting
 
