@@ -23,6 +23,7 @@ a proper spec once discovery is complete.
 | 1 | Background, move off Airtable, source material | Recorded |
 | 2 | Units as the basis of revenue; product structure | Recorded |
 | 3 | Company structure: departments and product lines; GL accounts | Recorded |
+| 4 | Revenue mix by product line | Recorded |
 
 ## Background
 
@@ -159,6 +160,38 @@ Dormant or near-dormant lines:
   (Revenue) for the revenue side. The schema should carry department on
   every line so that expenses can use it later without a redesign.
 
+## Segment 4: Revenue mix by product line
+
+Approximate share of Woodland Power Products revenue, from memory. Ken
+noted these are rough and not exact, but very close, and the gap
+between the top line and everything else is large.
+
+| Product line | Approx. share | Notes |
+|---|---|---|
+| Cyclone Rake | ~80% | The main product since inception, almost 30 years. Drives the business. |
+| Cyclone Rake Single | ~10% | |
+| Hose business | ~10% | Ken still plans to come back to the hose business in detail. |
+| Mower Deck Adapter (MDA) | Minor | The only other line with meaningful revenue, alongside nut rake, but very small next to the top three. |
+| Cyclone Nut Rake | Minor | Same as MDA: real but very small. |
+| Everything else | Minor, minor | Medical, EarthBox, Recon Power, legacy parts, dormant lines. |
+
+### Implications for the app
+
+- Design effort should be proportional. Cyclone Rake is where entry
+  detail, unit-level modeling, and review time matter most. Cyclone
+  Rake Single and hoses are the next tier. The rest can be simpler
+  dollar-level entry unless Ken says otherwise.
+- The report should make the mix visible. A share-of-revenue view by
+  product line is a natural summary on top of the detail.
+- Unit-driven modeling matters most for Cyclone Rake and Cyclone Rake
+  Single because that is where unit volume changes move the total. The
+  hose business is a large share but may not be unit-driven in the same
+  way; that is one to confirm when Ken returns to it.
+- Small lines should not get in the way. The entry UI should let a user
+  budget the small lines quickly, likely as a single dollar figure or a
+  prior-year-plus-percentage default, without forcing the full
+  unit-times-price structure.
+
 ## Parked questions
 
 Held until Ken finishes his walkthrough. Grouped by category so they can
@@ -178,6 +211,10 @@ be worked through one group at a time.
   dollar-only? Is there a consistent pattern (units, accessories,
   spare parts, kits)?
 - Which GL accounts are shared across multiple product lines?
+- Is the hose business unit-driven (feet of hose, kits, count of
+  assemblies) or budgeted in dollars?
+- For the minor lines, is a simple dollar entry or prior-year-plus-
+  percentage acceptable, or do they still need line-level detail?
 
 - Bundle mechanics: modifier on a model sale, or separate SKUs? Does
   every model offer both bundles?
