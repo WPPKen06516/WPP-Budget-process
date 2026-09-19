@@ -4,6 +4,25 @@ Working notes captured during project kickoff. This file is the running
 record of requirements as they are discussed. It will be reorganized into
 a proper spec once discovery is complete.
 
+## How this discovery is being run
+
+- Ken walks through his thoughts in segments, one topic per message, to
+  avoid timing or connectivity issues and to allow time to think.
+- Claude records each segment here verbatim in substance, commits it, and
+  replies only with a go-ahead. No questions are asked mid-walkthrough.
+- Questions that come up while recording are parked in the
+  "Parked questions" section at the bottom, grouped by category.
+- Once Ken says he has finished noting everything, Claude raises the
+  parked questions one category at a time, and each group is resolved
+  before moving to the next.
+
+## Segment log
+
+| # | Topic | Status |
+|---|-------|--------|
+| 1 | Background, move off Airtable, source material | Recorded |
+| 2 | Units as the basis of revenue; product structure | Recorded |
+
 ## Background
 
 - 2025: the 2026 budget was built in Airtable.
@@ -58,14 +77,33 @@ reason for a purpose-built app.
 - The product list will change year to year, so products must be
   versioned by fiscal year rather than hard-coded.
 
-## Open questions
+## Parked questions
 
-- Bundle mechanics (see above).
-- Do units get budgeted by month or by season, given leaf cleanup is
-  seasonal?
-- Are there other revenue streams beyond rakes, nut rake, and adapter
-  (parts, accessories, service, shipping)?
-- Is there a channel dimension (direct, dealer, online) that matters for
-  the report?
+Held until Ken finishes his walkthrough. Grouped by category so they can
+be worked through one group at a time.
+
+### Products and revenue model
+
+- Bundle mechanics: modifier on a model sale, or separate SKUs? Does
+  every model offer both bundles?
+- Units budgeted by month, or by season with a monthly spread applied?
+- One annual price per model, or per-month pricing?
+- Other revenue streams beyond rakes, nut rake, and adapter (parts,
+  accessories, shipping, service)?
+- Does sales channel (direct, dealer, online) matter to the report?
+
+### Source data and reporting
+
+- Airtable table exports and the Excel final report still to be received.
 - Where do actuals come from for prior-year comparison?
+
+### People and workflow
+
 - Who enters, who reviews, who approves?
+- How many rounds of review, and is there a lock or sign-off step?
+
+### Platform
+
+- Hosting preference and tolerance for a monthly cloud cost.
+- Microsoft 365 sign-in requirement?
+- Target date for opening 2027 budget entry.
