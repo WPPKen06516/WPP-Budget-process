@@ -24,6 +24,7 @@ a proper spec once discovery is complete.
 | 2 | Units as the basis of revenue; product structure | Recorded |
 | 3 | Company structure: departments and product lines; GL accounts | Recorded |
 | 4 | Revenue mix by product line | Recorded |
+| 5 | Customer segments: consumer lines vs. the hose business | Recorded |
 
 ## Background
 
@@ -192,6 +193,54 @@ between the top line and everything else is large.
   prior-year-plus-percentage default, without forcing the full
   unit-times-price structure.
 
+## Segment 5: Customer segments — consumer lines vs. the hose business
+
+### Cyclone Rake, Cyclone Rake Single, Nut Rake, and MDA: consumer products
+
+These four lines sell to a homeowner-dominated customer base.
+
+| Segment | Approx. share | Description |
+|---|---|---|
+| Homeowners | 85–90% | Typically own half an acre or more of property. |
+| Institutional / non-landscaping entities | 10–15% | Government, universities, churches, cemeteries, and similar. Entities that own grounds but are not lawn and landscaping businesses. |
+| Lawn and landscaping businesses | Very few | The product does not suit their get-in, get-out-quick workflow. The exception is a small mom-and-pop operation. |
+
+### Hose business: B2B
+
+The hose business is a fundamentally different business from the
+consumer lines.
+
+- It is set up primarily as **B2B**, not B2C.
+- The company is actively trying to grow the B2B side.
+- Current base: lawn and landscape hose replacements.
+- Growth targets: reach beyond lawn and landscape into industrial and
+  commercial buyers who need replacement or new hoses, including:
+  - Woodworking shops
+  - Ventilation
+  - Food processing
+  - Chemical processing
+- Positioning: help those businesses with replacement hoses or new
+  hoses for their operation.
+
+### Implications for the app
+
+- **Customer segment is a real dimension**, at least for revenue
+  analysis. The consumer lines split homeowner versus institutional.
+  The hose business splits by target industry. Whether the budget is
+  entered at that level or only reported at that level is a question to
+  park.
+- **The hose business needs its own growth model.** Because the company
+  is deliberately expanding into new industries, the 2027 hose budget is
+  likely built from growth assumptions by target market, not just prior
+  year plus a percentage. The app should support budgeting the hose
+  line by segment or industry if Ken wants that.
+- **Channel and customer type differ by line.** Consumer lines are
+  direct-to-homeowner. Hoses are B2B. Any channel or customer-type field
+  should be configurable per product line rather than global.
+- The report format from the Excel workbook will show whether segment
+  detail appears in the final presentation or is internal working
+  detail only.
+
 ## Parked questions
 
 Held until Ken finishes his walkthrough. Grouped by category so they can
@@ -213,6 +262,12 @@ be worked through one group at a time.
 - Which GL accounts are shared across multiple product lines?
 - Is the hose business unit-driven (feet of hose, kits, count of
   assemblies) or budgeted in dollars?
+- Should the hose budget be entered by target industry (lawn and
+  landscape, woodworking, ventilation, food processing, chemical) so
+  growth into new markets is visible, or as a single line?
+- For the consumer lines, does the homeowner versus institutional split
+  appear anywhere in the budget or the final report, or is it context
+  only?
 - For the minor lines, is a simple dollar entry or prior-year-plus-
   percentage acceptable, or do they still need line-level detail?
 
