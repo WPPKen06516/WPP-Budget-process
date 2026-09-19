@@ -22,6 +22,7 @@ a proper spec once discovery is complete.
 |---|-------|--------|
 | 1 | Background, move off Airtable, source material | Recorded |
 | 2 | Units as the basis of revenue; product structure | Recorded |
+| 3 | Company structure: departments and product lines; GL accounts | Recorded |
 
 ## Background
 
@@ -77,12 +78,106 @@ reason for a purpose-built app.
 - The product list will change year to year, so products must be
   versioned by fiscal year rather than hard-coded.
 
+## Segment 3: Company structure — departments and product lines
+
+### Two organizing dimensions
+
+The company's accounting is organized along two axes:
+
+1. **Department** — how expenses are classified.
+2. **Product line** — how sales and product-related activity are
+   classified.
+
+### Revenue always sits in the Revenue department
+
+- Revenue is booked to a single Revenue department, effectively an
+  "empty" department used only for revenue.
+- Expenses and product sales are identified by department, but revenue
+  is never split across operating departments.
+- Example: if Marketing happened to sell consulting services, it would
+  not be classified as Marketing revenue. It would be classified by its
+  product line (Consulting Services) with the department set to Revenue.
+- Rule for the app: **everything on the revenue side goes through the
+  Revenue department.** Product line is the meaningful dimension for
+  revenue; department is fixed.
+
+### Product lines (as listed so far)
+
+Active lines:
+
+| Product line | Notes |
+|---|---|
+| Cyclone Rake | Dual-pin hitch system. The flagship. Most units, most accessories, most spare parts, and therefore the most GL lines (close to 100). |
+| Cyclone Rake Single | Single-pin hitch system. Very similar to the Cyclone Rake. Some cost differences and a slight revenue uplift because single carries a small premium to the customer. |
+| Cyclone Nut Rake | Distinct product, previously noted in segment 2. |
+| Medical | Named as a product line. Details not yet discussed. |
+| EarthBox | Named as a product line. Details not yet discussed. |
+| Hose business | Named as a product line. Ken will come back to this. |
+| MDA (Mower Deck Adapter) | Aftermarket mower deck adapter business. Sold to customers and non-customers. |
+| Recon Power | Returned product that has been refurbished and is resold as near-new but not brand new. |
+
+Legacy lines, no longer sold but still supported in the field:
+
+| Product line | Notes |
+|---|---|
+| Super Hauler | Discontinued. Units remain in the field. Activity is aftermarket parts and accessories, for example engine maintenance kits (oil, air filter, and similar). |
+| Small Property Solution | Discontinued. Same situation as Super Hauler: parts and accessories for units in the field. |
+
+Dormant or near-dormant lines:
+
+- A "fall cleanup" or "leaf fall" line (exact name uncertain) that was
+  set up but never really developed.
+- Possibly one or two others Ken could not recall. These have either no
+  activity or only occasional activity.
+
+### GL accounts per product line
+
+- Each product line has anywhere from a couple of GL accounts up to
+  roughly 100 lines.
+- Some GL accounts are used by multiple product lines, but the activity
+  within them is specific to the product line.
+- Cyclone Rake has the most lines because it has the most units, the
+  most accessories driven by those units, spare parts, and other
+  related items.
+
+### Implications for the data model
+
+- The chart of accounts is a grid: **product line × GL account**, not a
+  flat account list. The same GL account can appear under several
+  product lines with separate budget values.
+- Product lines need a status: active, legacy (parts and accessories
+  only), dormant. The report may want to show or suppress lines
+  differently based on status.
+- Within a product line, lines fall into categories such as units,
+  accessories, spare parts, and maintenance kits. Some of these are
+  unit-driven and some are dollar-only. The model must allow both on
+  the same product line.
+- The Cyclone Rake and Cyclone Rake Single share a structure but have
+  different costs and prices. The catalog should let them share line
+  definitions while holding separate values.
+- Department is a required dimension for expenses and is constant
+  (Revenue) for the revenue side. The schema should carry department on
+  every line so that expenses can use it later without a redesign.
+
 ## Parked questions
 
 Held until Ken finishes his walkthrough. Grouped by category so they can
 be worked through one group at a time.
 
 ### Products and revenue model
+
+- Full list of product lines: confirm the ones Ken could not recall,
+  and the exact name of the "fall cleanup / leaf fall" line.
+- Medical and EarthBox: what are these lines, and are they unit-driven?
+- Hose business: Ken said he would come back to this.
+- Recon Power: is it its own product line on the report, or a
+  sub-line under the parent product (Cyclone Rake, etc.)?
+- Legacy lines (Super Hauler, Small Property Solution): shown on the
+  report as their own lines, or folded into a parts/accessories group?
+- Within a product line, which GL lines are unit-driven versus
+  dollar-only? Is there a consistent pattern (units, accessories,
+  spare parts, kits)?
+- Which GL accounts are shared across multiple product lines?
 
 - Bundle mechanics: modifier on a model sale, or separate SKUs? Does
   every model offer both bundles?
